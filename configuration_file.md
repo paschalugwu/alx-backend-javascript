@@ -1,46 +1,59 @@
 # Complete Setup
 
-Given the requirements and setup instructions provided in the project, here are the ways to perform all the necessary configurations and creation of virtual environment for the project:
+To ensure all installations and configurations are made only in the virtual environment, you can use `nvm` (Node Version Manager) to manage your NodeJS version and keep your project dependencies isolated. Here's a step-by-step guide tailored to your needs:
 
-1. **NodeJS Installation**:
-   Follow the instructions on the project page to install NodeJS 12.11.x using the provided commands.
+### Step 1: Install `nvm`
 
-2. **Project Setup**:
-   Use the provided `package.json`, `babel.config.js`, and `.eslintrc.js` files as specified in the project instructions.
+First, install `nvm` to manage NodeJS versions:
 
-Here's the guide based on the project's instructions:
+```sh
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+```
 
-### NodeJS Installation
+Add `nvm` to your shell profile by adding the following lines to your `.bashrc` or `.zshrc` file:
 
-1. **Install NodeJS 12.11.x**:
-   Run the following commands in your home directory to install the required NodeJS version:
-   ```sh
-   curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh
-   sudo bash nodesource_setup.sh
-   sudo apt install nodejs -y
-   ```
+```sh
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+```
 
-2. **Verify the installation**:
-   Ensure the correct versions of NodeJS and npm are installed:
-   ```sh
-   nodejs -v
-   # Should output v12.11.1
-   npm -v
-   # Should output 6.11.3
-   ```
+Reload your shell configuration:
 
-### Project Setup
+```sh
+source ~/.bashrc  # or source ~/.zshrc
+```
+
+### Step 2: Install NodeJS Using `nvm`
+
+With `nvm` installed, install and use the required NodeJS version:
+
+```sh
+nvm install 12.11.1
+nvm use 12.11.1
+```
+
+Verify the installation:
+
+```sh
+node -v  # Should output v12.11.1
+npm -v   # Should output 6.11.3
+```
+
+### Step 3: Set Up the Project
 
 1. **Create a project directory**:
-   ```sh
-   mkdir alx-backend-javascript
-   cd alx-backend-javascript
-   ```
+
+```sh
+mkdir alx-backend-javascript
+cd alx-backend-javascript
+```
 
 2. **Add configuration files**:
+
    Create and add the following files to your project directory with the provided contents:
 
    - **`package.json`**:
+
      ```json
      {
        "scripts": {
@@ -64,6 +77,7 @@ Here's the guide based on the project's instructions:
      ```
 
    - **`babel.config.js`**:
+
      ```js
      module.exports = {
        presets: [
@@ -80,6 +94,7 @@ Here's the guide based on the project's instructions:
      ```
 
    - **`.eslintrc.js`**:
+
      ```js
      module.exports = {
        env: {
@@ -118,29 +133,34 @@ Here's the guide based on the project's instructions:
      };
      ```
 
-3. **Install dependencies**:
-   Run `npm install` in your project directory to install Jest, Babel, and ESLint along with their dependencies:
-   ```sh
-   npm install
-   ```
+### Step 4: Install Dependencies
 
-### Working in the Virtual Environment
+Run `npm install` in your project directory to install Jest, Babel, and ESLint along with their dependencies:
 
-With the correct NodeJS version installed and the project dependencies set up, you can work in your virtual environment. Here are some common commands:
+```sh
+npm install
+```
+
+### Step 5: Working in the Virtual Environment
+
+With `nvm` managing your NodeJS version and dependencies installed in your project directory, you can now work within this virtual environment. Use the following commands for common tasks:
 
 - **Run scripts**:
+
   ```sh
   npm run dev <filename.js>
   ```
 
 - **Run tests**:
+
   ```sh
   npm test
   ```
 
 - **Lint the code**:
+
   ```sh
   npm run lint
   ```
 
-By following these steps, you ensure that your project setup aligns with the given instructions and utilizes a virtual environment for managing dependencies and configurations.
+By following these steps, all your installations and configurations will be isolated within the virtual environment created by `nvm` and your project directory. This ensures that your setup does not interfere with global packages or other projects.
