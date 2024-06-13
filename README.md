@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ES6 Data Manipulation
 
 ## Project Overview
@@ -130,3 +131,6 @@ Export a constant instance of `WeakMap` and a function `queryAPI` to track endpo
 - **GitHub Repository**: `alx-backend-javascript`
 - **Directory**: `0x03-ES6_data_manipulation`
 
+=======
+# ALX Backend Engineering Specialization
+>>>>>>> origin/main
